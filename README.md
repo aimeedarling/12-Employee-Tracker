@@ -22,7 +22,7 @@ You will see making your logo is very easy. I have included some samples in the 
 [Sam Meech-Ward || MySQL Node.js Express](https://www.youtube.com/watch?v=Hej48pi_lOc&ab_channel=SamMeech-Ward)
 
 
-Tutoring session with Meg Meyers on 06/11/2023
+Tutoring session with Meg Meyers on 06/28/2023
 
 
 ## License

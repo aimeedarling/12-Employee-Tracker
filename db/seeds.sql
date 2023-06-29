@@ -1,9 +1,9 @@
-INSERT INTO department (id, department_name)
-VALUES (001, 'nursing'),
-(002, 'technician'),
-(003, 'management'),
-(004, 'medical'),
-(005, 'anesthesia');
+INSERT INTO department (department_name)
+VALUES ('nursing'),
+('technician'),
+('management'),
+('medical'),
+('anesthesia');
 
 
 INSERT INTO role (id, title, salary, department_id)
