@@ -25,7 +25,7 @@ inquirer
         }
     ]).then(data =>{
         if(data.mainMenu === 'View all departments') 
-        viewDepartments()
+        viewAllDepartments()
         else if (data.mainMenu === 'View all roles')
         viewAllRoles()
         else if (data.mainMenu === 'View all employees')
@@ -43,7 +43,7 @@ inquirer
 }
 menu()
 
-async function viewDepartments(){
+async function viewAllDepartments(){
     const results = await db.query('SELECT * FROM department')
     console.table(results)
     menu()
@@ -51,6 +51,12 @@ async function viewDepartments(){
 
 async function viewAllRoles(){
     const results = await db.query('SELECT * FROM role')
+    console.table(results)
+    menu()
+}
+
+async function viewAllEmployees(){
+    const results = await db.query('SELECT * FROM employee')
     console.table(results)
     menu()
 }
