@@ -81,8 +81,16 @@ async function addDepartment(){
     })
 }
 
-async function addRole(){
+//!Currently working on
 
+async function addRole(){
+    inquirer.promt([
+        {
+            type: 'input',
+            name: 'addRole',
+            message: 'What role would you like to add?'
+        }
+    ])
     menu()
 }
 
