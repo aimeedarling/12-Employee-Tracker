@@ -112,6 +112,8 @@ async function addRole(){
 //!not working
 
 async function addEmployee(){
+    const roles = await db.query('SELECT id AS value, title AS name FROM role')
+    const employees = await db.query('SELECT id AS value, CONCAT(first_name, " ", last_name) AS name from employee')
     inquirer.prompt([
         {
             type: 'input',
@@ -125,16 +127,18 @@ async function addEmployee(){
         },
         {
             type:'list',
-            name:'role',
+            name: 'roleId',
+            choices: roles,
             message: 'Please select their role.'
         },
         {
             type:'list',
-            name: 'manager',
-            message: 'Who is their manager?'
+            name: 'managerId',
+            choices: employees,
+            message: 'Please select the manager of the employee'
         }
     ]).then(async data => {
-        await db.query('', [data.first_name, data.last_name, data.role, data.manager])
+        await db.query('INSERT INTO employee (first_name, last_name,role_id, manager_id) VALUES (?,?,?,?)', [data.first_name, data.last_name, data.roleId, data.managerId])
 
         console.log('✅ Employee added!')
         menu()

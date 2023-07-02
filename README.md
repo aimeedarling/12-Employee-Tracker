@@ -23,6 +23,8 @@ You will see making your logo is very easy. I have included some samples in the 
 
 [Beginner's guide to using MySQL database in a Node.js app](https://dev.to/lisahjung/beginner-s-guide-to-using-mysql-database-in-a-node-js-app-49li)
 
+[chatGPT](chat.openai.com)
+
 Tutoring session with Meg Meyers on 06/28/2023
 
 
