@@ -55,13 +55,23 @@ async function viewAllDepartments(){
 }
 
 async function viewAllRoles(){
-    const results = await db.query('SELECT * FROM role')
+    const results = await db.query('SELECT role.id, role.title, role.salary, department.department_name FROM role JOIN department ON role.department_id = department.id')
     console.table(results)
     menu()
 }
 
 async function viewAllEmployees(){
-    const results = await db.query('SELECT first_name, last_name FROM employee')
+    const sql = `SELECT employee.id, employee.first_name AS "first name", employee.last_name 
+                    AS "last name", role.title, department.department_name AS department, role.salary, 
+                    concat(manager.first_name, " ", manager.last_name) AS manager
+                    FROM employee
+                    LEFT JOIN role
+                    ON employee.role_id = role.id
+                    LEFT JOIN department
+                    ON role.department_id = department.id
+                    LEFT JOIN employee manager
+                    ON manager.id = employee.manager_id`
+    const results = await db.query(sql)
     console.table(results)
     menu()
 }
