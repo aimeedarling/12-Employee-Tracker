@@ -104,7 +104,7 @@ async function addRole(){
         }
     ]).then(async data => {
         await db.query('INSERT INTO role (title, salary, department_id) VALUES (?,?,?)', [data.title, data.salary, data.department])
-        console.log('✅ Role added!')
+        console.log(`✅ ${data.title} added to roles!`)
         menu()
     })
 }
@@ -140,7 +140,7 @@ async function addEmployee(){
     ]).then(async data => {
         await db.query('INSERT INTO employee (first_name, last_name,role_id, manager_id) VALUES (?,?,?,?)', [data.first_name, data.last_name, data.roleId, data.managerId])
 
-        console.log('✅ Employee added!')
+        console.log(`✅ ${data.first_name} ${data.last_name} added to employees!`)
         menu()
     })
 }
