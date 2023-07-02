@@ -21,6 +21,7 @@ You will see making your logo is very easy. I have included some samples in the 
 
 [Sam Meech-Ward || MySQL Node.js Express](https://www.youtube.com/watch?v=Hej48pi_lOc&ab_channel=SamMeech-Ward)
 
+[Beginner's guide to using MySQL database in a Node.js app](https://dev.to/lisahjung/beginner-s-guide-to-using-mysql-database-in-a-node-js-app-49li)
 
 Tutoring session with Meg Meyers on 06/28/2023
 

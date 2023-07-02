@@ -45,7 +45,7 @@ inquirer
         else {db.close()}
     })
 }
-//invokes menu function
+//calls menu function
 menu()
 
 async function viewAllDepartments(){
@@ -84,14 +84,29 @@ async function addDepartment(){
 //!Currently working on
 
 async function addRole(){
-    inquirer.promt([
+    const departments = await db.query('SELECT id AS value, department_name AS department from department')
+    inquirer.prompt([
         {
             type: 'input',
-            name: 'addRole',
+            name: 'title',
             message: 'What role would you like to add?'
+        },
+        {
+            type: 'input',
+            name: 'salary',
+            message: 'What is the salary?'
+        },
+        {
+            type: 'list',
+            name: 'department',
+            choices: departments,
+            message: 'What department?'
         }
-    ])
-    menu()
+    ]).then(async data => {
+        await db.query('INSERT INTO role (title = ?, salary = ?, department = ?)', [data.title, data.salary, data.department])
+        console.log('✅ Role added!')
+        menu()
+    })
 }
 
 async function addEmployee(){
@@ -116,7 +131,7 @@ async function updateEmployee(){
     }
     ]).then(async data =>{
         await db.query('UPDATE employee SET role_id = ? WHERE id = ?', [data.employeeID, data.roleID])
-        console.log('Employee role updated')
+        console.log('✅ Employee role updated')
         menu()
     })
 }
