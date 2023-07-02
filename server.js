@@ -81,10 +81,10 @@ async function addDepartment(){
     })
 }
 
-//!Currently working on
-
+//!working 🤗
 async function addRole(){
-    const departments = await db.query('SELECT id AS value, department_name AS department from department')
+    const departments = await db.query('SELECT id AS value, department_name AS name FROM department')
+    // const departments = await db.query('SELECT department_name as name FROM department')
     inquirer.prompt([
         {
             type: 'input',
@@ -103,7 +103,7 @@ async function addRole(){
             message: 'What department?'
         }
     ]).then(async data => {
-        await db.query('INSERT INTO role (title = ?, salary = ?, department = ?)', [data.title, data.salary, data.department])
+        await db.query('INSERT INTO role (title, salary, department_id) VALUES (?,?,?)', [data.title, data.salary, data.department])
         console.log('✅ Role added!')
         menu()
     })
