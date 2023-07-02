@@ -109,6 +109,8 @@ async function addRole(){
     })
 }
 
+//!not working
+
 async function addEmployee(){
     inquirer.prompt([
         {
@@ -131,9 +133,12 @@ async function addEmployee(){
             name: 'manager',
             message: 'Who is their manager?'
         }
-    ])
+    ]).then(async data => {
+        await db.query('', [data.first_name, data.last_name, data.role, data.manager])
 
-    menu()
+        console.log('✅ Employee added!')
+        menu()
+    })
 }
 
 async function updateEmployee(){
