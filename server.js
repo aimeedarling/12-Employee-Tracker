@@ -61,7 +61,7 @@ async function viewAllRoles(){
 }
 
 async function viewAllEmployees(){
-    const results = await db.query('SELECT * FROM employee')
+    const results = await db.query('SELECT first_name, last_name FROM employee')
     console.table(results)
     menu()
 }
@@ -110,6 +110,28 @@ async function addRole(){
 }
 
 async function addEmployee(){
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'first_name',
+            message: 'What is their first name?'
+        },
+        {
+            type: 'input',
+            name: 'last_name',
+            message: 'What is their last name?'
+        },
+        {
+            type:'list',
+            name:'role',
+            message: 'Please select their role.'
+        },
+        {
+            type:'list',
+            name: 'manager',
+            message: 'Who is their manager?'
+        }
+    ])
 
     menu()
 }
