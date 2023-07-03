@@ -25,7 +25,7 @@ inquirer
         {
             type:'list',
             name: 'mainMenu',
-            choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee role', 'Quit']
+            choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee role', 'Update an employees manager', 'Quit']
         }
     ]).then(data =>{
         if(data.mainMenu === 'View all departments') 
@@ -42,6 +42,8 @@ inquirer
         addEmployee()
         else if (data.mainMenu === 'Update an employee role')
         updateEmployee()
+        else if (data.mainMenu === 'Update an employees manager')
+        updateEmployeeManager()
         else {db.close()}
     })
 }
@@ -119,7 +121,6 @@ async function addRole(){
     })
 }
 
-//!not working
 
 async function addEmployee(){
     const roles = await db.query('SELECT id AS value, title AS name FROM role')
@@ -173,6 +174,29 @@ async function updateEmployee(){
     ]).then(async data =>{
         await db.query('UPDATE employee SET role_id = ? WHERE id = ?', [data.employeeID, data.roleID])
         console.log('✅ Employee role updated')
+        menu()
+    })
+}
+
+async function updateEmployeeManager(){
+    const employees = await db.query('SELECT id AS value, concat(first_name, " ", last_name) AS name from employee')
+    inquirer.prompt([
+       { type: 'list',
+       name: 'employee',
+       choices: employees,
+       message: 'Which employee would you like to assign a new manager?'
+    },
+    {
+        type: 'list',
+        name: 'manager',
+        choices: employees,
+        message: 'Who is their new manager?'
+    }
+    ]).then(async data =>{
+        if (data.employee !== data.manager) {await db.query('UPDATE employee SET manager_id =? WHERE id =?', [data.manager, data.employee])
+        console.log('✅ Employee manager updated')}
+        else
+        console.log (' ❌ You cannot assign employee to be their own manager')
         menu()
     })
 }
