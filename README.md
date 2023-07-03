@@ -1,17 +1,17 @@
-# 12-Employee-Tracker
+# Employee-Tracker
 
 ## Description
 
-I've created a simple command-line logo maker using node, inquirer, and jest. I've tried to write it using an object-oriented framework
+I've created a simple command-line employee tracker using node, inquirer, and mysql. I hope you find it useful!
 
 ## Installation
 
-You can clone down the repo [here](https://github.com/aimeedarling/SVG-Logo-Maker) then type `node index` in the command-line and follow the prompts to create your logo.
+You can clone down the repo [here](https://github.com/aimeedarling/Employee-Tracker). You'll need to source the schema and the seeds, then you will be able to type `node server` in the terminal and follow the prompts to update your employee database.
 
 ## Usage
 
-Please visit the walk through video [here](https://drive.google.com/file/d/1_q-SODgCacndWGw6ddplJ9fimAuyr9V2/view).
-You will see making your logo is very easy. I have included some samples in the examples folder. 
+Please visit the walk through video [here](https://drive.google.com/file/d/1y8NPbdxBDlLWZoRFOe4M4_LkXkknNcxI/view).
+You will see managing your employee database is very easy. 
 
 ## Credits
 
@@ -31,7 +31,3 @@ Tutoring session with Meg Meyers on 06/28/2023
 ## License
 
 ![Github license](https://img.shields.io/badge/license-MIT-pink.svg)
-
-## Tests
-
-Tests are included in the repo for each of the shapes (circle, triangle, and square), as well as test for rendering of the svg file. In order to run the test, please install the needed node modules, then simply enter `node test` in the command-line.

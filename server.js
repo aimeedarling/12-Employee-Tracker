@@ -157,22 +157,22 @@ async function addEmployee(){
 }
 
 async function updateEmployee(){
-    const employees = await db.query('SELECT id AS value, concat(first_name, " ", last_name) AS name from employee')
-    const roles = await db.query('SELECT id AS value, title as name FROM role')
+    const employees = await db.query('SELECT id AS value, concat(first_name, " ", last_name) AS name from employee');
+    const roles = await db.query('SELECT id AS value, title as name FROM role');
     inquirer.prompt([
         {type: 'list',
-        name: 'employeeID',
+        name: 'employeeId',
         choices: employees,
         message: 'Which employee are you updating?'
     },
     {
         type: 'list',
-        name: 'roleID',
+        name: 'roleId',
         choices: roles,
         message: 'What is their new role?'
     }
     ]).then(async data =>{
-        await db.query('UPDATE employee SET role_id = ? WHERE id = ?', [data.employeeID, data.roleID])
+        await db.query('UPDATE employee SET role_id = ? WHERE id = ?', [data.roleId, data.employeeId])
         console.log('✅ Employee role updated')
         menu()
     })
